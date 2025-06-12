@@ -50,6 +50,7 @@ export class AppComponent  {
   // pega todas as tarefas do backend e atribui ao toDo e ao toDoFiltrado
   GetAll() {
   this.manageTodoService.get().subscribe(toDo => {
+    console.log('ToDos carregados:', toDo);
     this.toDo = toDo;
     this.toDoFiltrado = this.toDo ; // inicializa com tudo
   });
@@ -57,11 +58,13 @@ export class AppComponent  {
 // filtra as tarefas pelo status, se o status for '', todofiltrado é igual a lista completa toDo, se não é feito o filtro
 // toDoFiltrado é mandado para os cards, seja ele cmo
   FiltrarStatus(status: string) {
+    console.log('status vindo do filtro:', status);
+    console.log('todos disponíveis:', this.toDo);
     console.log('no pai', status);
     if (status === '') {
       this.toDoFiltrado = this.toDo;
     } else {
-      this.toDoFiltrado = this.toDo.filter(todo => todo.status === status);
+      this.toDoFiltrado = this.toDo.filter(todo => todo.status.toLowerCase() === status.toLowerCase());
     }
   }
   //esta função chama o service de atualizar o status da tarefa, e depois do sucesso modifica o status no front
@@ -72,6 +75,7 @@ export class AppComponent  {
     next: (res) => {
       console.log('Status atualizado com sucesso!', res);
       todo.status = novoStatus;
+      this.toDo = this.toDo.map(t => t.id === todo.id ? { ...t, status: novoStatus } : t);
     },
     error: (err) => {
       console.error('Erro ao atualizar status:', err);

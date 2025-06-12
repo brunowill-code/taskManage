@@ -34,7 +34,7 @@ export class AddTodoComponent {
   status: Status[] = [
     {value: 'Pendente', viewValue: 'Pendente'},
     {value: 'Em Andamento', viewValue: 'Em Andamento'},
-    {value: 'Concluída', viewValue: 'Concluída'},
+    {value: 'Concluído', viewValue: 'Concluído'},
   ];
   //addToDo começa com valores vazios e vai sendo adicionado
   addToDo : AddTodo = {
