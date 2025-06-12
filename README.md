@@ -9,7 +9,7 @@ dotnet run
 ## Frontend (Angular)
 
 ```bash
-cd frontend/meu-projeto-angular
+cd frontend/frontend
 npm install
 ng serve
 ``` 
