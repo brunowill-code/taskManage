@@ -86,6 +86,7 @@ export class AppComponent  {
     this.manageTodoService.deleteToDo(toDoId).subscribe({
       next: () => {
         console.log('Tarefa deletada com sucesso!');
+        this.toDo = this.toDo.filter(t => t.id !== toDoId);
         this.toDoFiltrado = this.toDoFiltrado.filter(t => t.id !== toDoId);
 
       },
@@ -101,6 +102,7 @@ export class AppComponent  {
     this.manageTodoService.AddToDo(addToDo).subscribe({
       next: (novaTarefa: IToDo) => {
         console.log('Tarefa adicionada com sucesso!');
+        this.toDo = [...this.toDo, novaTarefa];
         this.toDoFiltrado = [...this.toDoFiltrado, novaTarefa];
       },
       error: (err) => {
