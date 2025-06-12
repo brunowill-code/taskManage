@@ -2,14 +2,14 @@
 
 ## Backend (.NET)
 ```bash
-cd backend/MeuProjeto.API
+cd backend
 dotnet run
 ``` 
 
 ## Frontend (Angular)
 
 ```bash
-cd frontend/frontend
+cd frontend
 npm install
 ng serve
 ``` 
