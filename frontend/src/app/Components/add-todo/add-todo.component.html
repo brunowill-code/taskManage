@@ -1,0 +1,24 @@
+<!-- Componente para adicionar novas tarefas linkando com o addToDo que será enviado para o componente pai ao clicar em adicionar tarefa -->
+
+<p>Adicione uma nova tarefa:</p>
+<mat-form-field class="example-full-width padding">
+    <mat-label>Título</mat-label>
+    <input matInput  [(ngModel)]="addToDo.title" >
+  </mat-form-field>
+<mat-form-field class="example-full-width padding">
+    <mat-label>Descrição</mat-label>
+    <input matInput  [(ngModel)]="addToDo.description" >
+  </mat-form-field>
+<mat-form-field class="example-full-width padding">
+    <mat-label>Data Vencimento</mat-label>
+    <input matInput [(ngModel)]="addToDo.deadline" >
+  </mat-form-field>
+<mat-form-field class="padding">
+  <mat-label>Status</mat-label>
+  <mat-select [(ngModel)]="addToDo.status">
+    <mat-option *ngFor="let statusvalue of status" [value]="statusvalue.value">
+        {{ statusvalue.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-raised-button class="padding-left" (click)="AdicionarTarefa()" >Adicionar Tarefa</button>

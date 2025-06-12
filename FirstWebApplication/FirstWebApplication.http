@@ -1,0 +1,35 @@
+@rootURL = http://localhost:5112
+
+###
+GET{{rootURL}}/api/ToDo
+Accept: application/json
+
+###
+GET{{rootURL}}/api/ToDo/1
+Accept: application/json
+
+
+###
+POST{{rootURL}}/api/ToDo
+Content-Type: application/json
+{
+    "id" : 6, 
+    "title": "Regar as Plantas",
+    "description" : "Molhar as plantas e passar veneno",
+    "deadline" : "15/06/2025",
+    "status" : "Em andamento",
+}
+
+###
+DELETE{{rootURL}}/api/ToDo/6
+
+###
+PATCH{{rootURL}}/api/ToDo/1
+Content-Type: application/json-patch+json
+[
+    {
+        "op": "replace",
+        "path": "/status",
+        "value": "Concluída"
+    } 
+]

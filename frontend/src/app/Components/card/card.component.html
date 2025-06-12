@@ -1,0 +1,30 @@
+<!-- Componente de card que contém as tarefas -->
+<!-- card com as informações das atividades, contém outputs para o componente pai para atualizar os status das tarefas -->
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{ tarefas.title }}</mat-card-title>
+    <mat-card-subtitle>{{ tarefas.status }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p><strong>Descrição: </strong> {{ tarefas.description }}</p>
+    <p><strong>Data:</strong> {{ tarefas.deadline }}</p>
+  </mat-card-content>
+
+  <mat-card-actions class="card-actions">
+    <mat-form-field class="status-select">
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="updateStatus">
+        <mat-option *ngFor="let statusvalue of status" [value]="statusvalue.value">
+          {{ statusvalue.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="card-footer">
+      <button mat-raised-button color="primary" (click)="atualizarStatus(tarefas)">Atualizar</button>
+      <button mat-raised-button color="warn" (click)="deletarTarefa(tarefas)">Excluir</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
+

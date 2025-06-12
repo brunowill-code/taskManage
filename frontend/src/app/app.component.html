@@ -1,0 +1,28 @@
+
+<div class="main-container">
+  <!-- Título e subtítulo -->
+  <h2 class="title">Sistema de Gerenciamento de Tarefas</h2>
+  <h3 class="subtitle">Acompanhe as suas tarefas</h3>
+
+  <!-- Formulário de adicionar tarefas -->
+  <section class="section-container">
+    <app-add-todo (addToDo)="AdicionarToDo($event)"></app-add-todo>
+  </section>
+
+  <!-- Filtro de status -->
+  <section class="section-container">
+    <app-filter (statusSelecionado)="FiltrarStatus($event)"></app-filter>
+  </section>
+
+  <!-- Componente de card que contém as tarefas -->
+  <section class="section-container">
+    <p>Lista de tarefas:</p>
+    @for (todo of toDoFiltrado; track todo.id) {
+      <app-card 
+        [Tarefas]= todo
+        (atualizarToDo)="AtualizarStatus($event)"
+        (deletar)="DeletarToDo($event)">
+      </app-card>
+    }
+  </section>
+</div>

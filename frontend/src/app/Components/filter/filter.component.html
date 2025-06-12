@@ -1,0 +1,16 @@
+<!-- Componente para filtrar as tarefas por status -->
+<!-- Ao clivar no botão o filtrar() é chamado e as strings Pendente, Em andamento e Concluida são mandadas para o componente pai -->
+
+<div class="filtro">
+    <p>Filtre as tarefas:</p>
+    <mat-form-field class="padding">
+        <mat-label>Status</mat-label>
+        <mat-select [(ngModel)]="statusFiltered">
+            <mat-option *ngFor="let statusvalue of status" [value]="statusvalue.value">
+                {{ statusvalue.viewValue }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button class="margin-left" (click)="filtrar()">Filtrar</button>
+</div>
+
